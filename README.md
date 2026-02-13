@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Deriverse Analytics Dashboard 📊
 
-## Getting Started
+> A high-performance, institutional-grade analytics interface for the Deriverse ecosystem.
 
-First, run the development server:
 
-```bash
+
+## 🎥 Live Demo
+**[Watch the 30-Second Walkthrough Video](https://youtu.be/fcu_fQziMUI)**
+
+---
+
+## ⚡️ Project Overview
+This project is a specialized frontend implementation designed to bring professional-grade analytics to Deriverse traders. Unlike standard DEX interfaces, this dashboard focuses on **Post-Trade Analysis**, **Performance Tracking**, and **Journaling**.
+
+It solves the problem of "blind trading" by providing real-time PnL visualization, win-rate metrics, and a dedicated trading journal to track psychological edges.
+
+### 🌟 Key Features
+* **Real-Time PnL Engine:** Client-side calculation of Total Profit, Win Rate, and Average PnL based on trade history.
+* **Interactive Filtering:** Instantly filter trade history by **Symbol** (e.g., "BTC", "SOL") or **Side** (Long/Short) to analyze specific strategies.
+* **Persistent Trade Journal:** A local-first journaling system that saves user notes to `localStorage`, ensuring data privacy and persistence without requiring a database connection.
+* **Fee Analysis:** Dedicated tracking of cumulative platform fees to provide a transparent "Net PnL" view.
+* **Institutional UI:** A dense, dark-mode aesthetic inspired by Bloomberg/Terminal interfaces, optimized for high-frequency data consumption.
+
+---
+
+## ⚠️ Prototype Status & Architecture
+This submission represents **Phase 1** of the analytics suite.
+
+* **Data Source:** Uses a deterministic mock engine (`lib/mockData.ts`) to simulate a mature trading account with 50+ trades. This allows judges to experience the *full analytics capability* (charts, filters, math) without needing a funded wallet or hitting RPC rate limits.
+* **Logic:** The math engines (PnL, Win Rate, Ratios) are fully functional and production-ready; they currently consume the mock hook but are designed to swap easily to a `useDeriverseData` hook.
+
+---
+
+## 🛠 Tech Stack
+* **Framework:** Next.js 14 (App Router)
+* **Styling:** Tailwind CSS (Zinc/Slate Dark Mode)
+* **Components:** Shadcn UI + Lucide React
+* **Visualization:** Recharts (Responsive PnL Area Charts)
+* **State Management:** React Hooks + LocalStorage API
+
+---
+
+## 🚀 Roadmap (Future Scope)
+While the Core UX is complete, the following features are architected for Phase 2:
+
+* **[Planned] Live Indexer Integration:** Connecting the `useMarketData` hook to the Deriverse on-chain program ID.
+* **[Planned] Drawdown Visualization:** A secondary chart overlay showing max drawdown percentage over time.
+* **[Planned] Session Metrics:** Breaking down PnL by trading session (Asian/London/NY).
+* **[Planned] Export:** CSV/PDF export of the trade journal for tax purposes.
+
+---
+
+## 💻 Running Locally
+
+bash
+# 1. Clone the repo
+git clone [https://github.com/yourusername/deriverse-dashboard.git](https://github.com/yourusername/deriverse-dashboard.git)
+
+# 2. Install dependencies
+npm install
+
+# 3. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open http://localhost:3000 with your browser to see the result.
